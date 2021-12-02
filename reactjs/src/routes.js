@@ -1,17 +1,17 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home';
-import Lugares from './pages/layoutLugares';//tela da disposição das poltronas vagas/ocupadas
+import Lugares from './components/boxHorario/index.js';//tela da disposição das poltronas vagas/ocupadas
 
 
-export default function Routes(){
+export default function Rout(){
   
     return (
         <BrowserRouter>
-            <Switch>
-                <Route path="/" exact={true} component={Home} /> 
-                <Route path="/layout-lugares" component={Lugares} /> 
-            </Switch>
+            <Routes>
+                <Route path="/" exact={true} element={Home} /> 
+                <Route path="/layout-lugares" element={Lugares} /> 
+            </Routes>
         </BrowserRouter>
     )
 }
