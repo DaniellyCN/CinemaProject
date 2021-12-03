@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Sla from'./components/botão/index';
+import Rout from'./routes.js';
 
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Sla/>
+    <Rout/>
   </React.StrictMode>,
   document.getElementById('root')
 );
