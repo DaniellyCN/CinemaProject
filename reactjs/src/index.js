@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Rout from'./components/ingresso/index';
+import Rout from'./components/cineMonk/index';
 
 
 
