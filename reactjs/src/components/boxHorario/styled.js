@@ -8,6 +8,21 @@ border-radius: 13px;
 padding:1em 1.4em;
 display: flex;
 flex-direction: column;
+align-items: center;
+justify-content: center;
+color:#fff;
+
+
+.sala, .audio{
+    font: 1.5em SpaceMono;
+    font-weight: 700;
+}
+
+.horario{
+    font: 2.5em Spartan;
+    font-weight: 700;
+    margin:0.3em 0em 0.15em 0em;
+}
 `
 
 export  {BoxH}
