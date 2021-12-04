@@ -9,7 +9,7 @@ background-color: black;
 h3 {
     font-family: 'Share Tech', sans-serif;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 54px;
     color:  #E1E1E1;
     text-shadow: 1px 1px 4px 0px #CACACA;

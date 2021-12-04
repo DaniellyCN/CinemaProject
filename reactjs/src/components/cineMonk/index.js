@@ -9,7 +9,7 @@ background-color: black;
 h1 {
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 30px;
     line-height: 54px;
     color:  #F0A124;
     text-shadow: rgba(255, 255, 255, 0.5);
