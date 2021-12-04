@@ -7,7 +7,7 @@ padding: 3em 6.2em;
 background-image: url('/assets/imagens/Fundo.png');
 .Faixa1{
     display: flex;
-    
+    justify-content: space-between;
     .Esquerda{
     display: flex;
     flex-direction: row;

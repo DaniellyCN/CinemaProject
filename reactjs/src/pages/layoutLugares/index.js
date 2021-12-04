@@ -11,7 +11,7 @@ export default function LayoutLugares(){
                     <CineMonk/>
                 </div>
                 <div className = "Direita">
-                    <Subtitulo>Selecione os melhores lugares</Subtitulo>
+                    <Subtitulo subtitulo = 'Selecione os melhores lugares'/>
                 </div>
             </div>
             <div className = "Conteudo">

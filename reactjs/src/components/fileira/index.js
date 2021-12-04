@@ -1,9 +1,9 @@
 import {Letra} from './styled'
 
-export default function Fileira(){
+export default function Fileira(props){
     return(
         <Letra>
-            <div>A</div>
+            <div>{props.letrinha}</div>
         </Letra>
     )
 }
