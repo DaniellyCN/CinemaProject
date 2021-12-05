@@ -7,8 +7,9 @@ position: relative;
 display: flex;
 align-items: center;
 justify-content: center;
+padding: 0em 1.8em;
 .numero{
-    font: 0.9em Spartan;
+    font: 0.8em Spartan;
     color: black;
     position: absolute;
     color:white;

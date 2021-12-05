@@ -11,7 +11,7 @@ button {
     border: none;
     height: 8em;
     width: 8em;
-    
+    background: radial-gradient(50% 50% at 50% 50%, #F4F4F4 0%, #C1C1C1 100%);
     align-items: center;
     text-align: center;
 
@@ -39,6 +39,7 @@ export default function Botao(props) {
         <ConteinerB>
             <button> 
                 <h5>{props.botao}</h5>
+                <h5>{props.etapa}</h5>
             </button>
         </ConteinerB>
     )
