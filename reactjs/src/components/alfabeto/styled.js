@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 
 const Letra = styled.div`
-width: 3em;
-height: 2.7em;
+width: 2.8em;
+height: 2.5em;
 background-color: #AA0A0A;
 border-radius: 13px;
-padding:1em 1.4em;
+padding:0.5em 0em;
 display: flex;
 flex-direction: column;
 align-items: center;
-justify-content: center;
+justify-self: center;
 color:#fff;
 position: absolute;
-justify-content: center;
-align-items: center;
 div{
     position:relative;
-    font: 1.7em Spartan;
+    font: 1.5em Spartan;
     font-weight:700;}
 `
 
