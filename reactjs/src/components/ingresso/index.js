@@ -4,13 +4,21 @@ import styled from "styled-components";
 
 const ConteinerIng = styled.div`
 display: flex;
-flex-direction: column;
+position: relative;
+background-image: url("./assets/imagens/ticket-512.svg");
+height: 20em;
+width: 21em;
+background-repeat: no-repeat;
 
+.xl {
+    display: flex;
+    flex-direction: row;
+}
 
 .box-nomes {
-    position: absolute;
-    top: 10em;
-    left: 09em;
+  position: absolute;
+  top: 9em;
+  left: 9em;
 }
 .codigo {
     color: #960404;
@@ -34,9 +42,12 @@ flex-direction: column;
     font-family: 'Share Tech', sans-serif;
     font-weight: 400;
 
+    margin-top: 7px;
+    margin-bottom: 7px;
+
     font-size: 20px;
     line-height: 23px;
-    padding-right: 54em;
+    padding-right: 1em;
 
 }
 
@@ -48,22 +59,17 @@ flex-direction: column;
     font-size: 18px;
     line-height: 15px;
 }
-img {
-    width: 25em;
-}
+
 `
 export default function Ingresso(props) {
     return(
         <ConteinerIng>
-            <div> 
-                <img src="./assets/imagens/ticket.svg" alt="" />
                 <div className='box-nomes'>
-                <div className='codigo'> A1 MEIA #864825684 </div> 
-                <div className='data'> 04/06/2021 17:02 </div>
-                <div className='filme'> Harry Potter e a Pedra Filosofal </div> 
-                <div className='sala'> Dublado  Sala 08  13:00h </div>  
+                    <div className='codigo'> A1 MEIA #864825684 </div> 
+                    <div className='data'> 04/06/2021 17:02 </div>
+                    <div className='filme'> Harry Potter e a Pedra Filosofal </div> 
+                    <div className='sala'> Dublado  Sala 08  13:00h </div>  
                 </div>
-            </div>
         </ConteinerIng>
 
 

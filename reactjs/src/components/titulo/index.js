@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const ContainerT = styled.div`
 display: inline;
-background-color: black;
 
 h1 {
     font-family: 'Heebo', sans-serif;

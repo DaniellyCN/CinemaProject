@@ -4,16 +4,15 @@ import styled from "styled-components";
 
 const ContainerT = styled.div`
 display: inline;
-background-color: black;
 
-h1 {
+div {
     font-family: 'Heebo', sans-serif;
     font-weight: 400;
-    font-size: 30px;
+    font-size:  48px;
     line-height: 54px;
     color:  #F0A124;
-    text-shadow: rgba(255, 255, 255, 0.5);
 
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 `
 
@@ -21,7 +20,7 @@ h1 {
 export default function Titulo() {
     return(
         <ContainerT>
-            <h1>CineMonk</h1>
+            <div>CineMonk</div>
         </ContainerT>
     )
 }

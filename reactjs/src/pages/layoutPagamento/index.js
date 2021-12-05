@@ -1,7 +1,9 @@
+import Botao from '../../components/botão'
 import Titulo from '../../components/cineMonk'
+import SelectEntrada from '../../components/Select-Entrada'
 import Subtitulo from '../../components/subtitulo'
 import {ContainerPagamento} from './styled'
-
+import Filme from '../../components/FilmeUnico/styled'
 
 export default function Pagamento(props) {
     return(
@@ -14,12 +16,14 @@ export default function Pagamento(props) {
                 <div className="subtitulos"> <Subtitulo subtitulo="Selecione a melhor opção de pagamento" /> </div>
             </div>
             <div className="conteudo">
+                <div className="box-filme"> 
+                    <Filme />
+                </div>
                 <div className="box-cont"> 
                     <div className="lugares">
-                        <div className="nome-lu"> Lugares </div>
+                        <div className="nom-pedido"> Lugares </div>
                         <div className="in"> 
-                            <div className="a"> </div>
-                            <div className="b"> <input /> </div>
+                            <SelectEntrada />
                         </div>
                     </div>
                     <div className="borda"></div>
@@ -30,6 +34,9 @@ export default function Pagamento(props) {
                         <div className="total" style={{marginLeft: '3em'}}> Total: R$ 100,00 </div>
                     </div> 
                 </div>
+            </div>
+            <div className="roda"> 
+                <Botao botao="Concluir" />
             </div>
         </ContainerPagamento>
     )

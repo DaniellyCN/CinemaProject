@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const ContainerPagamento = styled.div`
 background-image: url("./assets/imagens/fundo.png");
-height: 100vh;
+min-height:  100vh;
 
 display: flex;
 flex-direction: column;
@@ -16,16 +16,25 @@ flex-direction: column;
 .cabe1  {
 display: flex;
 flex-direction: row;
+margin-top: 2.5em;
 }
 
-img {
-    width: 4em;
+.logo {
+    img {
+        width: 4em;
+    }
 }
-
 .titulos {
 margin-left: 1em;
 }
 
+
+.conteudo {
+display: flex;
+justify-content: space-between;
+
+padding: 0em 7em 0em 12em;
+}
 .nom-pedido {
     font-family: 'Spartan';
     font-weight: 700;
@@ -54,12 +63,13 @@ margin-left: 1em;
     justify-content: space-between;
     
     margin-top: 3em;
-    margin-left: 32em;
     padding: 0em 2em 0em 4em;
 
 
-    border: 1px solid rgba(83, 0, 0, 0.92);
-    background-color: rgba(170, 10, 10, 1);
+    background: linear-gradient(183.2deg, #861B1B 12.34%, #F80000 148.35%);
+    box-shadow: 8px 5px 5px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 54px;
+    border: 0px solid transparent;
     border-radius: 10px;
 
 
@@ -77,6 +87,14 @@ margin-left: 1em;
     border-radius: 10px;
     height: 16em;
 
+}
+
+.roda {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-right: 8em;
+    margin-top: -7em;
 }
 `
 
