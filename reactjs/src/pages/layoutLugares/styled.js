@@ -34,6 +34,8 @@ background-image: url('/assets/imagens/Fundo.png');
     .btn-botao{
         margin-top: -6em;
         margin-left: 3em;
+        display: flex;
+        align-items: flex-end;
         
     }
     .vazio{height:42px;}

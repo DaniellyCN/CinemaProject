@@ -8,6 +8,10 @@ display: flex;
 align-items: center;
 justify-content: center;
 padding: 0em 1.8em;
+& :hover{
+    cursor: pointer;
+}
+
 .numero{
     font: 0.8em Spartan;
     color: black;

@@ -12,6 +12,8 @@ width: 100%;
 }
 .grupo1{
     width: 5%;
+    display: flex;
+    align-items: center;
 }
 .grupo2{
     width:22%;

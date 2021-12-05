@@ -45,7 +45,7 @@ export default function FilmeUnicos() {
             <div className="boxFilme">
                 <div className="img-Filme"> <img src="./assets/imagens/image 13.png" alt="" /> </div>
                 <div className="nomeFilme"> Harry Potter e a Pedra Filosofal </div>
-                <div className="idioma"> Legendado e Dublado <br/> classificação: +12</div>
+                <div className="idioma"> Legendado e Dublado <br/> Classificação: +12</div>
             </div>
         </ContainerUnico>
     )
