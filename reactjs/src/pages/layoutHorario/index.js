@@ -9,7 +9,7 @@ export default function LayoutHorario(){
         <HorarioSala>
             <div className = "Faixa1H">
                 <div className = "EsquerdaH">
-                    <img src= "/assets/imagens/Logo.svg"/>
+                    <img src= "/assets/imagens/Logo.svg" alt=""/>
                     <CineMonk/>
                 </div>
                 <div className = "DireitaH">

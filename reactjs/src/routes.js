@@ -18,7 +18,7 @@ export default function Rout(){
                 <Route path="/"  element={<Home/>} />  
                 <Route path="programacao-semanal" element={<ProgSemanal/>}/>
                 <Route path="/horarios" element={<Horario/>}/>
-                <Route path="/layout-lugares" element={<Lugares/>} />
+                <Route path="/lugares" element={<Lugares/>} />
                 <Route path="/pagamento" element ={<Pagamento/>}/>
                 <Route path="/CompraConcluida" element={<LayoutTicket/>}/>
 

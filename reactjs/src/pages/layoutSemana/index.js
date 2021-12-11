@@ -9,7 +9,7 @@ export default function LayoutSemana(props){
     return(
         <Semana>
             <div className = "TituloS">
-                <img src='/assets/imagens/Logo.svg'/>
+                <img src='/assets/imagens/Logo.svg' alt=""/>
                 <CineMonk/>
             </div>
 
