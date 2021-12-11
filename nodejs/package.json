@@ -1,0 +1,23 @@
+{
+  "name": "cinema",
+  "version": "1.0.0",
+  "description": "vivencia - totem cinema",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set PORT=8081 && node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaniellyCN/CinemaProject.git"
+  },
+  "author": "Grupo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaniellyCN/CinemaProject/issues"
+  },
+  "homepage": "https://github.com/DaniellyCN/CinemaProject#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
