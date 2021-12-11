@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-
+import { Link } from "react-router-dom";
 
 const ContainerUnico = styled.div`
 margin-right: 3em;
@@ -17,14 +17,18 @@ margin-right: 3em;
     width: 22.3em;
     &:hover{
     cursor: pointer;
-    transform: scale(1.1);  
+    transform: scale(1.1); 
+    border-bottom-right-radius: 16px 
     }
 }
 
 img {
-    width: 8em;
+    max-width: 8em;
+    
     margin-top: 2px;
     margin-left: 3px;
+    border-top-left-radius: 16px;
+
 }
 
 .nomes {
@@ -51,18 +55,19 @@ img {
 }
 `
 
-export default function Filme() {
+export default function Filme(props) {
 
     return(
         <ContainerUnico>
-            <div className="boxFilme">
-                <div className="img-Filme"> <img src="./assets/imagens/image 13.png" alt="" /> </div>
-                <div className="nomes">
-                    <div className="nomeFilme"> Harry Potter e a Pedra Filosofal </div>
-                    <div className="idioma"> Legendado e Dublado <br/>  Classificação: +12</div>
+               
+                <div className="boxFilme">
+                 <div className="img-Filme"> <img src={props.info.filme.capa} alt="" /> </div> 
+                 
+                    <div className="nomes">
+                         <div className="nomeFilme"> {props.info.filme.nome != null && props.info.filme.nome.length >= 28 ? props.info.filme.nome.substr(0, 28) + '...' : props.info.filme.nome} {/*{props.info.filme.nome} */}</div> 
+                        <div className="idioma"> {props.info.filme.idiomas} <br/> {props.info.filme.classificacao}</div>
+                    </div>
                 </div>
-            </div>
-
         </ContainerUnico>
     )
 }

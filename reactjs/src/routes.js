@@ -7,6 +7,7 @@ import LayoutTicket from './pages/layoutTicket';
 import Home from './pages/home';
 import Pagamento from './pages/layoutPagamento';
 import ProgSemanal from './pages/layoutSemana';
+import LayoutFilmes from './pages/layoutFilmes';
 
 
 
@@ -21,6 +22,7 @@ export default function Rout(){
                 <Route path="/lugares" element={<Lugares/>} />
                 <Route path="/pagamento" element ={<Pagamento/>}/>
                 <Route path="/CompraConcluida" element={<LayoutTicket/>}/>
+                <Route path="/Filmes" element={<LayoutFilmes/>}/>
 
             </Routes>
         </Router>
