@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Rout from'./pages/layoutFilmes/index';
+import Rout from'./routes';
 
 
 
