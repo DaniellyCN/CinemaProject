@@ -69,6 +69,18 @@ app.get('/availableMovies/:date', async (req, resp) => {
     resp.send(movies);
 })
 
+app.get('/availableSession/:date/:filme', async (req, resp) => {
+    let { filme } = req.params;
+    let { date } = req.params;
+    let news = new Date().toISOString().slice(0, 10);
+
+    let x = await 
+    dbLugares.find({ data: date, filme: filme})
+    .toArray();
+    resp.send(x)
+})
+
+
 
 app.get('/ping', async (req, resp) => {
     resp.send('Bora Trabalhar Dani😥😥😥😥')
