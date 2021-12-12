@@ -16,6 +16,7 @@ flex-direction: column;
 .logo img {
     width: 4em;
     margin-top: 1em;
+    background-color: red;
 }
 .sub {
     display: flex;
