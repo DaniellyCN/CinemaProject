@@ -21,14 +21,14 @@ export default function LayoutHorario(){
                 <div className = "BoxFilme"><FilmeUnico/></div>
                 <div className = "BoxHorario">
                     <div>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
                     </div>
                     <div>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
-                        <BoxPequena sala = '08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
+                        <BoxPequena sala = 'Sala 08' horario = '13:00' audio = 'Dublado'/>
                     </div>
 
 

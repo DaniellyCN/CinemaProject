@@ -2,6 +2,7 @@ import {Semana} from './styled';
 import CineMonk from '../../components/titulo';
 import Subtitulo from '../../components/subtitulo';
 import BoxSemana from '../../components/boxSemana';
+import {Link} from 'react-router-dom';
 
 export default function LayoutSemana(props){
 

@@ -39,7 +39,7 @@ padding: 2em 0em;
         } 
        
     }
-   
+   .none{text-decoration:none;}
 }
     .ConteudoH:hover{
             transform: scale(1.1);

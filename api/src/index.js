@@ -12,7 +12,7 @@ const conn = await MongoClient.connect('mongodb+srv://devmonk:d3v@cluster.ru31h.
 const dbSessoes  = await conn.db('ingressos').collection('sessoes')
 const dbLugares  = await conn.db('ingressos').collection('lugares')
 
-
+//rota para Tela 2: Dias disponíveis
 app.get('/availableDays', async (req, resp) => {
     try {
         let news = new Date().toISOString().slice(0, 10);
@@ -56,7 +56,7 @@ app.get('/availableDays', async (req, resp) => {
     }
 })
 
-
+// rota para Tela 3: Filmes disponíveis para data escolhida
 app.get('/availableMovies/:date', async (req, resp) => {
     let { date } = req.params;
 
@@ -69,14 +69,34 @@ app.get('/availableMovies/:date', async (req, resp) => {
     resp.send(movies);
 })
 
+//rota para Tela 4: 
 app.get('/availableSession/:date/:filme', async (req, resp) => {
     let { filme } = req.params;
     let { date } = req.params;
-    let news = new Date().toISOString().slice(0, 10);
 
+    let news = new Date().toISOString().slice(0, 10);
+ 
     let x = await 
-    dbLugares.find({ data: date, filme: filme})
+    dbLugares
+    .aggregate([
+        {
+            $group: {
+                _id: '$hora'
+            },
+        },
+
+        {
+            $project: {
+                hora: '$_id',
+                _id:0,
+                //filme:[{idiomas:1}]
+                
+            }
+        }
+    ])
+  
     .toArray();
+    
     resp.send(x)
 })
 
@@ -87,4 +107,47 @@ app.get('/ping', async (req, resp) => {
 })
 
 
+
+//rota para Tela 5:Get
+app.get('/availableSeats/:date/:movie/:hora/:sala', async (req,resp) =>{
+    let {date,movie,hora,sala} = req.params;
+
+  
+    let k = await dbSessoes.findOne({data:date,'filme.nome':movie, 'horarios.hora':hora,'horarios.sala':sala});
+    //.aggregate([{match:{'horarios.hora':hora}}])
+
+    resp.send(k)
+})
+
+
+//rota para Tela 5: Put
+app.put('/reserveSeat/:date/:movie/:hora/:sala', async (req,resp) =>{
+    let {situacao} = req.body;
+
+    let ambiente = await dbSessoes.findOne({data:date,'filme.nome':movie, 'horarios.hora':hora,'horarios.sala':sala});
+
+    let atualizar = await dbLugares.updateOne(
+        {_id:ambiente._id},
+        {$set:{'ambiente.lugar.situacao':'Reservado'}}
+
+    )
+
+    resp.send(atualizar);
+})
+
+//rota par Tela 6: post
+app.post('/buyTickets', async (req,resp) =>{
+    let {tipo,situacao} = req.body;
+
+    let compra = await dbLugares.insertOne(
+        //cade o campo de tipo de ingresso,brunex?
+    ).toArray();
+
+    resp.send();
+})
+
+
+
 app.listen(process.env.PORT, () => console.log('server up!'))
+
+

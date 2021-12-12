@@ -2,8 +2,10 @@ import { ContainerFilme } from "./styled";
 import Titulo from '../../components/cineMonk'
 import Subtitulo from '../../components/subtitulo'
 import Filme from '../../components/Filme/styled'
+import {Link} from 'react-router-dom';
 import Api from '../../services/api'
 import { useEffect, useState } from "react";
+
 
 const api = new Api();
 
@@ -36,10 +38,13 @@ export default function Filmes() {
             </div>
             <div className="filmes">
                 {Filmes.map(item => 
-                      <Filme 
-                      key={item.id}
-                      info={item}
+                      <Link  to = {{pathname:'/horarios'}}>
+                        <Filme 
+                        key={item.id}
+                        info={item}
                         />
+                        </Link>
+                    
                   )}    
             </div>
         </ContainerFilme>

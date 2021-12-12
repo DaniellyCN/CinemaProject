@@ -1,1 +1,4 @@
-show collections;
+show databases;
+
+use ingressos;
+
