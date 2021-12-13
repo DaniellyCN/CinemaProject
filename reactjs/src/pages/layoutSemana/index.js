@@ -3,10 +3,24 @@ import CineMonk from '../../components/titulo';
 import Subtitulo from '../../components/subtitulo';
 import BoxSemana from '../../components/boxSemana';
 import {Link} from 'react-router-dom';
+import Api from '../../services/api';
+import { useState, useEffect } from 'react';
+
+const api = new Api();
+
 
 export default function LayoutSemana(props){
+    const [box, setBox] = useState([]);
+    
+    async function listar(){
+        const informacoes = await api.listarBox();
+        setBox(informacoes.splice(1,6));
+    }
 
-
+    useEffect(() => {
+        listar();      
+        
+    }, [])
     return(
         <Semana>
             <div className = "TituloS">
@@ -19,24 +33,23 @@ export default function LayoutSemana(props){
             </div>
 
             <div className = "ConteudoS">
-                <div className = "BoxGrande">
-                    <div className = "diaSemana">Hoje</div>
-                    <div className = "diaMes">04</div>
-                    <div className = "mes">Maio</div>
-                </div>
+            {box.slice(0,1).map(item =>
+                <Link className='none' to = {{pathname:'/Filmes'}}>
+                    <div className = "BoxGrande">
+                        <div className='diaSemana'>{item.diaSemana}</div>
+                        <div className='diaMes'>{item.dia}</div>
+                        <div className='mes'>{item.mes}</div>
+                    </div>
+                        </Link>
+                    )}
+                
                 <div className = "BoxesPeq">
-                    <div>
-                    <BoxSemana diaSemana='Sábado' diaMes='05' mes='Maio'/>
-                    <BoxSemana diaSemana={'Domingo'} diaMes={'06'} mes={'Maio'}/>
-                    <BoxSemana diaSemana={'Segunda'} diaMes={'07'} mes={'Maio'}/>
-                    </div>
-
-                    <div>
-                        
-                    <BoxSemana diaSemana={'Terça'} diaMes={'08'} mes={'Maio'}/>
-                    <BoxSemana diaSemana={'Quarta'} diaMes={'09'} mes={'Maio'}/>
-                    <BoxSemana diaSemana={'Quinta'} diaMes={'10'} mes={'Maio'}/>
-                    </div>
+                   {box.slice(1,7).map(item =>
+                         <Link className='none' to = {{pathname:'/Filmes', state:item}}>
+                        <BoxSemana
+                        info={item}/>
+                        </Link>
+                    )}
                     
                 </div>
             </div>

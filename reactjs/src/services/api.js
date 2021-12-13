@@ -7,4 +7,12 @@ export default class Api {
         let r = await api.get(`/availableMovies/${date}`);
         return r.data;
     }
+
+    // Tela 2
+    async listarBox(){
+        let r = await api.get('/availableDays');
+        return r.data;
+    }
+
+
 }

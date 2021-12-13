@@ -30,7 +30,9 @@ margin-top: 2.5em;
 margin-left: 1em;
 }
 
-
+.none{
+    text-decoration:none;
+}
 .filmes {
     display: flex;
     justify-content: start;

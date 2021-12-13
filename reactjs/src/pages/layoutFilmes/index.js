@@ -38,7 +38,7 @@ export default function Filmes() {
             </div>
             <div className="filmes">
                 {Filmes.map(item => 
-                      <Link  to = {{pathname:'/horarios'}}>
+                      <Link className="none" to = {{pathname:'/horarios', state:item}}>
                         <Filme 
                         key={item.id}
                         info={item}

@@ -17,7 +17,7 @@ padding: 2em 3em;
 .ConteudoS{
     display: flex;
     margin-top: 3em;
-    justify-content: center;
+    width: 100%;
 
     .BoxGrande{
         width: 22em;
@@ -41,15 +41,19 @@ padding: 2em 3em;
         }
 
         }.BoxesPeq{
-            width: 50%;
+            width: 100%;
             height: 100%;
+           
+            display: flex;
+            justify-content: space-between;
+            flex-direction:row;
            & > div {
                 width: 85%;
-                display: flex;
-                justify-content: space-between;
+                
                 margin-bottom: 1.8em;
             }
         }
+        .none{text-decoration:none;}
 }
 
 `

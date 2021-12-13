@@ -18,11 +18,12 @@ export default function Rout(){
             <Routes>
                 <Route path="/"  element={<Home/>} />  
                 <Route path="programacao-semanal" element={<ProgSemanal/>}/>
+                <Route path="/Filmes" element={<LayoutFilmes/>}/>
                 <Route path="/horarios" element={<Horario/>}/>
                 <Route path="/lugares" element={<Lugares/>} />
                 <Route path="/pagamento" element ={<Pagamento/>}/>
                 <Route path="/CompraConcluida" element={<LayoutTicket/>}/>
-                <Route path="/Filmes" element={<LayoutFilmes/>}/>
+                
 
             </Routes>
         </Router>
