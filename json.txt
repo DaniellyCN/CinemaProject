@@ -1,0 +1,9 @@
+Formas de acessar atributo de json:
+
+--> pelo ponto
+
+--> por chave: colocar o nome do atributo em string dentro da chave e referenciar de qual objeto se está falando.
+ex:
+
+
+	object['atributo']

@@ -6,10 +6,13 @@ import {Link} from 'react-router-dom';
 import Api from '../../services/api';
 import { useState, useEffect } from 'react';
 
-const api = new Api();
 
 
 export default function LayoutSemana(props){
+
+    const api = new Api();
+
+
     const [box, setBox] = useState([]);
     
     async function listar(){
@@ -34,7 +37,7 @@ export default function LayoutSemana(props){
 
             <div className = "ConteudoS">
             {box.slice(0,1).map(item =>
-                <Link className='none' to = {{pathname:'/Filmes'}}>
+                <Link className='none' to = {{pathname:'/Filmes', state:item}}>
                     <div className = "BoxGrande">
                         <div className='diaSemana'>{item.diaSemana}</div>
                         <div className='diaMes'>{item.dia}</div>

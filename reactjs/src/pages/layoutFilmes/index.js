@@ -7,11 +7,12 @@ import Api from '../../services/api'
 import { useEffect, useState } from "react";
 
 
-const api = new Api();
 
 
-export default function Filmes() {
 
+export default function Filmes(props) {
+    const api = new Api();
+    
     const [Filmes, SetFilmes] = useState([])
 
 
