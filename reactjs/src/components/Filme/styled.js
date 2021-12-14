@@ -59,7 +59,7 @@ export default function Filme(props) {
 
     return(
         <ContainerUnico>
-               
+            
                 <div className="boxFilme">
                  <div className="img-Filme"> <img src={props.info.filme.capa} alt="" /> </div> 
                  
@@ -68,6 +68,10 @@ export default function Filme(props) {
                         <div className="idioma"> {props.info.filme.idiomas} <br/> {props.info.filme.classificacao}</div>
                     </div>
                 </div>
+                <Link to={{pathname:'/horarios',
+                        state: props.item}} >
+                          <div> hh </div>
+            </Link>
         </ContainerUnico>
     )
 }

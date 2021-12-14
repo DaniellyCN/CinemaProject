@@ -12,7 +12,7 @@ const api = new Api();
 
 export default function Filmes() {
 
-    const [Filmes, SetFilmes] = useState([])
+    const [filmes, SetFilmes] = useState([])
 
 
 
@@ -20,7 +20,7 @@ export default function Filmes() {
  
     useEffect(() => { 
       const listar = async() => {
-        const produtosr = await api.listarFilmes('2021-12-12');
+        const produtosr = await api.listarFilmes('2021-12-17');
         SetFilmes(produtosr);
       }
       listar();
@@ -37,13 +37,11 @@ export default function Filmes() {
                 <div className="subtitulos"> <Subtitulo subtitulo="Selecione o filme que deseja assistir" /> </div>
             </div>
             <div className="filmes">
-                {Filmes.map(item => 
-                      <Link className="none" to = {{pathname:'/horarios', state:item}}>
+                {filmes.map(item => 
                         <Filme 
                         key={item.id}
                         info={item}
                         />
-                        </Link>
                     
                   )}    
             </div>

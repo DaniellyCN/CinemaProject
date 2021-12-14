@@ -109,7 +109,6 @@ app.get('/availableDays', async (req, resp) => {
 })
 
 
-
 // rota para Tela 3: Filmes disponíveis para data escolhida
 app.get('/availableMovies/:date', async (req, resp) => {
     try {
@@ -130,42 +129,58 @@ app.get('/availableMovies/:date', async (req, resp) => {
     }
 })
 
+
+
+
+app.get('/availableSession', async (req, resp) => {
+    let {Movi, date} = req.query;
+    let hor = await
+                dbSessoes.find({
+                    'data': date,
+                'filme.nome': Movi
+                })
+                .toArray();
+
+                resp.send(hor)
+})
+
+
 //rota para Tela 4: 
-app.get('/availableSession/:date/:filme', async (req, resp) => {
-    try {
+// app.get('/availableSession/:date/:filme', async (req, resp) => {
+//     try {
         
    
-    let { filme } = req.params;
-    let { date } = req.params;
+//     let { filme } = req.params;
+//     let { date } = req.params;
 
-    let news = new Date().toISOString().slice(0, 10);
+//     let news = new Date().toISOString().slice(0, 10);
  
-    let x = await 
-    dbLugares
-    .aggregate([
-        {
-            $group: {
-                _id: '$hora'
-            },
-        },
+//     let x = await 
+//     dbLugares
+//     .aggregate([
+//         {
+//             $group: {
+//                 _id: '$hora'
+//             },
+//         },
 
-        {
-            $project: {
-                hora: '$_id',
-                _id:0,
-                //filme:[{idiomas:1}]
+//         {
+//             $project: {
+//                 hora: '$_id',
+//                 _id:0,
+//                 //filme:[{idiomas:1}]
                 
-            }
-        }
-    ])
+//             }
+//         }
+//     ])
   
-    .toArray();
+//     .toArray();
     
-    resp.send(x)
-    } catch (error) {
-         resp.send({error:'Deu ruim'})   
-    }
-})
+//     resp.send(x)
+//     } catch (error) {
+//          resp.send({error:'Deu ruim'})   
+//     }
+// })
 
 
 
@@ -238,6 +253,27 @@ app.post('/buyTickets', async (req,resp) =>{
     }
 })
 
+app.get('/availableSeats', async (req,resp) =>{
+    try {
+        
+    let {date,movie,hora,sala} = req.query;
+
+  
+    let k = await 
+    dbLugares.find({
+        'data': date,
+        'filme': movie,
+        'hora': hora,
+        'sala': sala
+    })
+    .project ({_id: 0})
+    .toArray()
+
+    resp.send(k)
+    } catch (error) {
+        resp.send({error:'Deu ruim'})    
+    }
+})
 
 
 app.listen(process.env.PORT, () => console.log('server up!'))
