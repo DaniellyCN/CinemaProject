@@ -59,7 +59,7 @@ app.get('/availableDays', async (req, resp) => {
     try {
         
 
-        let news = new Date().toISOString().substr(0, 10);
+        let news = new Date().toISOString().slice(0, 10);
         let days = await 
         dbSessoes
         .aggregate([ 

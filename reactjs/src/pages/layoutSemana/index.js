@@ -17,7 +17,7 @@ export default function LayoutSemana(props){
     
     async function listar(){
         const informacoes = await api.listarBox();
-        setBox(informacoes.splice(1,6));
+        setBox(informacoes);
     }
 
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function LayoutSemana(props){
                     )}
                 
                 <div className = "BoxesPeq">
-                   {box.slice(1,7).map(item =>
+                   {box.slice(1,box.length+1).map(item =>
                          <Link className='none' to = {{pathname:'/Filmes', state:item}}>
                         <BoxSemana
                         info={item}/>

@@ -18,7 +18,7 @@ padding: 2em 3em;
     display: flex;
     margin-top: 3em;
     width: 100%;
-
+    justify-content:center;
     .BoxGrande{
         width: 22em;
         height: 19.2em;
@@ -41,17 +41,13 @@ padding: 2em 3em;
         }
 
         }.BoxesPeq{
-            width: 100%;
+            width: 50%;
             height: 100%;
-           
+            
             display: flex;
             justify-content: space-between;
             flex-direction:row;
-           & > div {
-                width: 85%;
-                
-                margin-bottom: 1.8em;
-            }
+            flex-wrap:wrap;
         }
         .none{text-decoration:none;}
 }
