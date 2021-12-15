@@ -20,7 +20,7 @@ function getDayNumber(data) {
 }
 
 function getWeekDay(data) {
-    let currentDay =  new Date().toISOString().slice(0, 10);;
+    let currentDay =  new Date().toISOString().slice(0, 10);
     if (currentDay === data)
         return 'HOJE'
 
@@ -98,9 +98,10 @@ app.get('/availableDays', async (req, resp) => {
                 mes: getMonthName(item.data),
                 diaSemana: getWeekDay(item.data),
                 dia: getDayNumber(item.data)
+                
             }
         })
-
+        console.log(days[0].data)
         resp.send(days);
 
     } catch (e) {

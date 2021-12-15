@@ -9,7 +9,7 @@ export default class Api {
     }
 
     // Tela 2
-    async listarBox(){
+    async listarDias(){
         let r = await api.get('/availableDays');
         return r.data;
     }

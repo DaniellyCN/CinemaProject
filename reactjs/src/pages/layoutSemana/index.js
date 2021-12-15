@@ -1,4 +1,5 @@
 import {Semana} from './styled';
+
 import CineMonk from '../../components/titulo';
 import Subtitulo from '../../components/subtitulo';
 import BoxSemana from '../../components/boxSemana';
@@ -6,17 +7,19 @@ import {Link} from 'react-router-dom';
 import Api from '../../services/api';
 import { useState, useEffect } from 'react';
 
+const api = new Api();
+
 
 
 export default function LayoutSemana(props){
 
-    const api = new Api();
+    
 
 
     const [box, setBox] = useState([]);
     
     async function listar(){
-        const informacoes = await api.listarBox();
+        const informacoes = await api.listarDias();
         setBox(informacoes);
     }
 

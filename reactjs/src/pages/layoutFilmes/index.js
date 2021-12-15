@@ -8,25 +8,23 @@ import { useEffect, useState } from "react";
 
 
 
-
+const api = new Api();
 
 export default function Filmes(props) {
-    const api = new Api();
     
-    const [Filmes, SetFilmes] = useState([])
+    
+    const [Filmes, SetFilmes] = useState(props.location.state)
+    
 
-
-
- 
- 
     useEffect(() => { 
       const listar = async() => {
-        const produtosr = await api.listarFilmes('2021-12-12');
+        const produtosr = await api.listarFilmes(Filmes.data);
+        
+        
         SetFilmes(produtosr);
       }
       listar();
     })
-
 
     return (
         <ContainerFilme>
