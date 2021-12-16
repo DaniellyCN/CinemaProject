@@ -154,7 +154,6 @@ app.get('/availableSession/:date/:filme', async (req, resp) => {
             $project: {
                 hora: '$_id',
                 _id:0,
-                //filme:[{idiomas:1}]
                 
             }
         }
@@ -183,36 +182,9 @@ app.get('/ping', async (req, resp) => {
 
 
 
-//rota para Tela 5:Get: usando parametro de rota
-app.get('/availableSeats/:date/:movie/:hora/:sala', async (req,resp) =>{
-    try {
-        
-    
-    let {date,movie,hora,sala} = req.params;
-
-  
-    let k = await dbSessoes.findOne({data:date,'filme.nome':movie, 'horarios.hora':hora,'horarios.sala':sala});
-    //.aggregate([{match:{'horarios.hora':hora}}])
-
-    resp.send(k)
-    } catch (error) {
-        resp.send({error:'Deu ruim'})    
-    }
-})
-
 
 //rota para Tela 5:Get: usando parametro de query
 app.get('/availableSeats', async (req,resp) =>{
-    let {date,movie,hora,sala} = req.query;
-
-    let r = await dbLugares.find({'data':date, 'filme':movie, 'hora':hora, 'sala':sala}).toArray();
-
-    resp.send(r);
-})
-
-
-
-app.get('/desafio', async (req,resp) =>{
     let {date,movie,hora,sala} = req.query;
 
     let r = await dbLugares.find({
@@ -226,7 +198,7 @@ app.get('/desafio', async (req,resp) =>{
     }).toArray();
 
 
-    
+    /*  by BRUNO
     let fileiras = [];
     let fileiraObj = {};
 
@@ -246,28 +218,7 @@ app.get('/desafio', async (req,resp) =>{
     }
 
     return resp.send(fileiras);
-
-
-
-
-    // quando usar req.query em vez de req.params?
-
-    /*async function oi(){
-        let a = 0;
-     for (var i = 0; i < r.length; i++) {
-        r.map(item =>{
-            return{
-                number:  1
-            }
-            
-        })
-        a+=1
-     }
-    }
-    r = oi();
     */
-
-    // lógica invertida
 
     //parte 1   -- pegar os atributos do objeto lugar sem precisar passar ele como parametro !importante isso!
     r = r.map(item => {
@@ -278,19 +229,7 @@ app.get('/desafio', async (req,resp) =>{
         }
         
     }) 
-
     
- 
-   /* var assentos = [];
-    for (var i = 0; i < r.length; i++) {
-        var j = {}
-        console.log(r[i].numero)
-        console.log(r[i].situacao)
-       assentos.push(r[i].numero)
-       assentos.push(r[i].situacao)
-   
-    }
-    */
    //parte2  -- criar um array de objetos. cada objeto tem como atributo: situacao e numero
     var assentos = [];
     
@@ -302,7 +241,6 @@ app.get('/desafio', async (req,resp) =>{
         
     }
     
-
     //parte 3: criar um objeto com os seguintes atributos: fileira(será criado a seguir) e assento(já foi criado)
     var final = []
 
@@ -313,32 +251,17 @@ app.get('/desafio', async (req,resp) =>{
         objeto2['fileira']= letras[i]
         objeto2['assento']=[]
         for (var j in r){
-            if(r[j].letra == letras[i]){
+            if(r[j].letra == letras[i])
                 objeto2.assento.push(assentos[j])
-                console.log(r[j])
-                console.log(letras[i])
-            }else{console.log('oi')}
+                
         }
         final.push(objeto2)
         
-            /*
-            if(letras[i] == r[j].letra ){
-                console.log(assentos)
-                assentos.splice(assentos[j],1)
-                objeto2['assentos']=assentos
-            }else{}*/
-    
     }
     assentos.splice(assentos[0],1)
-    /*
-    if(r[0].letra=="A"){
-        r.splice(r[0],1)
-    }
-*/
+
     resp.send(final);
 })
-
-
 
 //rota para Tela 5: Put
 app.put('/reserveSeat/:date/:movie/:hora/:sala', async (req,resp) =>{

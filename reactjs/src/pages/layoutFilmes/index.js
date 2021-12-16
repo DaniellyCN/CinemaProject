@@ -11,8 +11,6 @@ import { useEffect, useState } from "react";
 const api = new Api();
 
 export default function Filmes(props) {
-    
-    
     const [Filmes, SetFilmes] = useState(props.location.state)
     
 
@@ -36,7 +34,7 @@ export default function Filmes(props) {
                 <div className="subtitulos"> <Subtitulo subtitulo="Selecione o filme que deseja assistir" /> </div>
             </div>
             <div className="filmes">
-                {Filmes.map(item => 
+                {Filmes.map((item) => 
                       <Link className="none" to = {{pathname:'/horarios', state:item}}>
                         <Filme 
                         key={item.id}

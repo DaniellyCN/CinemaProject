@@ -12,17 +12,17 @@ const api = new Api();
 
 
 export default function LayoutSemana(props){
-
     
-
-
+    
     const [box, setBox] = useState([]);
-    
+
     async function listar(){
         const informacoes = await api.listarDias();
         setBox(informacoes);
+        
     }
-
+    console.log(props);
+    
     useEffect(() => {
         listar();      
         
@@ -39,8 +39,9 @@ export default function LayoutSemana(props){
             </div>
 
             <div className = "ConteudoS">
-            {box.slice(0,1).map(item =>
-                <Link className='none' to = {{pathname:'/Filmes', state:item}}>
+            {box.slice(0,1).map((item) =>
+              
+                <Link to = {{pathname:'/Filmes', state:item}} className='none'>
                     <div className = "BoxGrande">
                         <div className='diaSemana'>{item.diaSemana}</div>
                         <div className='diaMes'>{item.dia}</div>
@@ -50,8 +51,8 @@ export default function LayoutSemana(props){
                     )}
                 
                 <div className = "BoxesPeq">
-                   {box.slice(1,box.length+1).map(item =>
-                         <Link className='none' to = {{pathname:'/Filmes', state:item}}>
+                   {box.slice(1,box.length).map((item) =>
+                         <Link to = {{pathname:'/Filmes', state: item}} className='none'>
                         <BoxSemana
                         info={item}/>
                         </Link>
