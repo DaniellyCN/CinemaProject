@@ -134,16 +134,18 @@ app.get('/availableMovies/:date', async (req, resp) => {
 
 
 app.get('/availableSession', async (req, resp) => {
-    let {Movi, date} = req.query;
+    let { date, Movie} = req.query;
     let hor = await
-                dbSessoes.find({
+                dbSessoes.findOne({
                     'data': date,
-                'filme.nome': Movi
-                })
-                .toArray();
+                'filme.nome': Movie
+                });
 
-                resp.send(hor)
-})
+                resp.send(hor.horarios);
+});
+
+
+
 
 
 //rota para Tela 4: 
@@ -388,28 +390,6 @@ app.post('/buyTickets', async (req,resp) =>{
     ).toArray();
 
     resp.send();
-    } catch (error) {
-        resp.send({error:'Deu ruim'})    
-    }
-})
-
-app.get('/availableSeats', async (req,resp) =>{
-    try {
-        
-    let {date,movie,hora,sala} = req.query;
-
-  
-    let k = await 
-    dbLugares.find({
-        'data': date,
-        'filme': movie,
-        'hora': hora,
-        'sala': sala
-    })
-    .project ({_id: 0})
-    .toArray()
-
-    resp.send(k)
     } catch (error) {
         resp.send({error:'Deu ruim'})    
     }

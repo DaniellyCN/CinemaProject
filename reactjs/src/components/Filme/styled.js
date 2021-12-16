@@ -18,10 +18,14 @@ margin-right: 3em;
     &:hover{
     cursor: pointer;
     transform: scale(1.1); 
-    border-bottom-right-radius: 16px 
-    }
+    border-bottom-right-radius: 16px; 
+    
 }
-
+    
+}
+a {
+    text-decoration: none;
+}
 img {
     max-width: 8em;
     
@@ -59,7 +63,8 @@ export default function Filme(props) {
 
     return(
         <ContainerUnico>
-            
+            <Link to='/horarios'
+                        state={props.info} >
                 <div className="boxFilme">
                  <div className="img-Filme"> <img src={props.info.filme.capa} alt="" /> </div> 
                  
@@ -68,9 +73,7 @@ export default function Filme(props) {
                         <div className="idioma"> {props.info.filme.idiomas} <br/> {props.info.filme.classificacao}</div>
                     </div>
                 </div>
-                <Link to={{pathname:'/horarios',
-                        state: props.item}} >
-                          <div> hh </div>
+                
             </Link>
         </ContainerUnico>
     )
