@@ -11,6 +11,7 @@ align-items: center;
 justify-content: center;
 padding: 1em 0em;
 transition: .5s ease;
+margin-bottom:2em;
 &:hover{
     cursor: pointer;
     transform: scale(1.2);  

@@ -1,4 +1,5 @@
 import {Semana} from './styled';
+
 import CineMonk from '../../components/titulo';
 import Subtitulo from '../../components/subtitulo';
 import BoxSemana from '../../components/boxSemana';
@@ -9,12 +10,17 @@ import { useState, useEffect } from 'react';
 const api = new Api();
 
 
+
 export default function LayoutSemana(props){
+
+    
+
+
     const [box, setBox] = useState([]);
     
     async function listar(){
-        const informacoes = await api.listarBox();
-        setBox(informacoes.splice(1,6));
+        const informacoes = await api.listarDias();
+        setBox(informacoes);
     }
 
     useEffect(() => {
@@ -34,7 +40,7 @@ export default function LayoutSemana(props){
 
             <div className = "ConteudoS">
             {box.slice(0,1).map(item =>
-                <Link className='none' to = {{pathname:'/Filmes'}}>
+                <Link className='none' to = {{pathname:'/Filmes', state:item}}>
                     <div className = "BoxGrande">
                         <div className='diaSemana'>{item.diaSemana}</div>
                         <div className='diaMes'>{item.dia}</div>
@@ -44,7 +50,7 @@ export default function LayoutSemana(props){
                     )}
                 
                 <div className = "BoxesPeq">
-                   {box.slice(1,7).map(item =>
+                   {box.slice(1,box.length+1).map(item =>
                          <Link className='none' to = {{pathname:'/Filmes', state:item}}>
                         <BoxSemana
                         info={item}/>

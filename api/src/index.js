@@ -20,7 +20,7 @@ function getDayNumber(data) {
 }
 
 function getWeekDay(data) {
-    let currentDay =  new Date().toISOString().slice(0, 10);;
+    let currentDay =  new Date().toISOString().slice(0, 10);
     if (currentDay === data)
         return 'HOJE'
 
@@ -82,12 +82,12 @@ app.get('/availableDays', async (req, resp) => {
                 }
             },
             {
-                $limit: 7
-            },
-            {
                 $sort: {
                     data: 1
                 }
+            },
+            {
+                $limit: 7
             }
         ])
         .toArray();
@@ -98,9 +98,10 @@ app.get('/availableDays', async (req, resp) => {
                 mes: getMonthName(item.data),
                 diaSemana: getWeekDay(item.data),
                 dia: getDayNumber(item.data)
+                
             }
         })
-
+        console.log(days[0].data)
         resp.send(days);
 
     } catch (e) {
@@ -197,7 +198,7 @@ app.get('/ping', async (req, resp) => {
 
 
 
-//rota para Tela 5:Get
+//rota para Tela 5:Get: usando parametro de rota
 app.get('/availableSeats/:date/:movie/:hora/:sala', async (req,resp) =>{
     try {
         
@@ -213,6 +214,145 @@ app.get('/availableSeats/:date/:movie/:hora/:sala', async (req,resp) =>{
         resp.send({error:'Deu ruim'})    
     }
 })
+
+
+//rota para Tela 5:Get: usando parametro de query
+app.get('/availableSeats', async (req,resp) =>{
+    let {date,movie,hora,sala} = req.query;
+
+    let r = await dbLugares.find({'data':date, 'filme':movie, 'hora':hora, 'sala':sala}).toArray();
+
+    resp.send(r);
+})
+
+
+
+app.get('/desafio', async (req,resp) =>{
+    let {date,movie,hora,sala} = req.query;
+
+    let r = await dbLugares.find({
+        'data':date, 
+        'filme':movie, 
+        'hora':hora, 
+        'sala':sala
+    }).sort({
+        'lugar.letra': 1,
+        'lugar.numero': 1
+    }).toArray();
+
+
+    
+    let fileiras = [];
+    let fileiraObj = {};
+
+    for (let item of r) {
+        if (item.lugar.letra != fileiraObj.fileira) {
+            fileiraObj = { 
+                fileira: item.lugar.letra, 
+                assentos: [] 
+            }
+            fileiras.push(fileiraObj);
+        }
+
+        fileiraObj.assentos.push({
+            numero: item.lugar.numero,
+            situacao: item.lugar.situacao
+        })
+    }
+
+    return resp.send(fileiras);
+
+
+
+
+    // quando usar req.query em vez de req.params?
+
+    /*async function oi(){
+        let a = 0;
+     for (var i = 0; i < r.length; i++) {
+        r.map(item =>{
+            return{
+                number:  1
+            }
+            
+        })
+        a+=1
+     }
+    }
+    r = oi();
+    */
+
+    // lógica invertida
+
+    //parte 1   -- pegar os atributos do objeto lugar sem precisar passar ele como parametro !importante isso!
+    r = r.map(item => {
+        return{
+            letra:item['lugar'].letra,
+            numero:item['lugar'].numero,
+            situacao:item['lugar'].situacao
+        }
+        
+    }) 
+
+    
+ 
+   /* var assentos = [];
+    for (var i = 0; i < r.length; i++) {
+        var j = {}
+        console.log(r[i].numero)
+        console.log(r[i].situacao)
+       assentos.push(r[i].numero)
+       assentos.push(r[i].situacao)
+   
+    }
+    */
+   //parte2  -- criar um array de objetos. cada objeto tem como atributo: situacao e numero
+    var assentos = [];
+    
+    for (var i = 0; i < r.length; i++){
+        var objeto = {};
+        objeto['situacao']=r[i].situacao
+        objeto['número']=r[i].numero
+        assentos.push(objeto)
+        
+    }
+    
+
+    //parte 3: criar um objeto com os seguintes atributos: fileira(será criado a seguir) e assento(já foi criado)
+    var final = []
+
+    var letras = 'ABCDEFGHIJK'
+    //var assentosTroca = assentos
+    for(var i = 0; i < letras.length; i++){
+        var objeto2 ={}
+        objeto2['fileira']= letras[i]
+        objeto2['assento']=[]
+        for (var j in r){
+            if(r[j].letra == letras[i]){
+                objeto2.assento.push(assentos[j])
+                console.log(r[j])
+                console.log(letras[i])
+            }else{console.log('oi')}
+        }
+        final.push(objeto2)
+        
+            /*
+            if(letras[i] == r[j].letra ){
+                console.log(assentos)
+                assentos.splice(assentos[j],1)
+                objeto2['assentos']=assentos
+            }else{}*/
+    
+    }
+    assentos.splice(assentos[0],1)
+    /*
+    if(r[0].letra=="A"){
+        r.splice(r[0],1)
+    }
+*/
+    resp.send(final);
+})
+
 
 
 //rota para Tela 5: Put
