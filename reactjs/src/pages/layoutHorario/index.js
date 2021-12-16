@@ -3,9 +3,11 @@ import CineMonk from '../../components/titulo';
 import Subtitulo from '../../components/subtitulo';
 import FilmeUnico from '../../components/FilmeUnico/styled';
 import BoxPequena from '../../components/boxHorario';
-import { useState} from 'react';
+import { useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import Api from '../../services/api'
 
+const api = new Api();
 
 export default function LayoutHorario(){
     const [filmes, SetFilmes] = useState([])
