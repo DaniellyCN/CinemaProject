@@ -14,5 +14,9 @@ export default class Api {
         return r.data;
     }
 
+    async ListarHorario(date, Movie) {
+        let s = await api.get('/availableSession?date=${date}&Movie=${Movie}');
+        return s.data;
+    }
 
 }

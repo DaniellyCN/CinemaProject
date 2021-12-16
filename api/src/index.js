@@ -110,7 +110,6 @@ app.get('/availableDays', async (req, resp) => {
 })
 
 
-
 // rota para Tela 3: Filmes disponíveis para data escolhida
 app.get('/availableMovies/:date', async (req, resp) => {
     try {
@@ -131,15 +130,33 @@ app.get('/availableMovies/:date', async (req, resp) => {
     }
 })
 
+
+
+
+app.get('/availableSession', async (req, resp) => {
+    let { date, Movie} = req.query;
+    let hor = await
+                dbSessoes.findOne({
+                    'data': date,
+                'filme.nome': Movie
+                });
+
+                resp.send(hor.horarios);
+});
+
+
+
+
+
 //rota para Tela 4: 
-app.get('/availableSession/:date/:filme', async (req, resp) => {
-    try {
+// app.get('/availableSession/:date/:filme', async (req, resp) => {
+//     try {
         
    
-    let { filme } = req.params;
-    let { date } = req.params;
+//     let { filme } = req.params;
+//     let { date } = req.params;
 
-    let news = new Date().toISOString().slice(0, 10);
+//     let news = new Date().toISOString().slice(0, 10);
  
     let x = await 
     dbLugares
@@ -155,17 +172,17 @@ app.get('/availableSession/:date/:filme', async (req, resp) => {
                 hora: '$_id',
                 _id:0,
                 
-            }
+             }
         }
-    ])
+     ])
   
-    .toArray();
+//     .toArray();
     
-    resp.send(x)
-    } catch (error) {
-         resp.send({error:'Deu ruim'})   
-    }
-})
+//     resp.send(x)
+//     } catch (error) {
+//          resp.send({error:'Deu ruim'})   
+//     }
+// })
 
 
 
@@ -300,7 +317,6 @@ app.post('/buyTickets', async (req,resp) =>{
         resp.send({error:'Deu ruim'})    
     }
 })
-
 
 
 app.listen(process.env.PORT, () => console.log('server up!'))

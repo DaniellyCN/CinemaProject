@@ -8,6 +8,18 @@ import { Link } from 'react-router-dom';
 
 
 export default function LayoutHorario(){
+    const [filmes, SetFilmes] = useState([])
+
+
+    useEffect(() => { 
+        const listar = async() => {
+          const produtosr = await api.ListarHorario('2021-12-16', 'Cruella');
+          
+          
+          SetFilmes(produtosr);
+        }
+        listar();
+      })
 
     const [horario, setHorario] = useState()
 

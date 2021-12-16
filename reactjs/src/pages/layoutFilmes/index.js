@@ -40,8 +40,7 @@ export default function Filmes(props) {
                         key={item.id}
                         info={item}
                         />
-                        </Link>
-                    
+                    </Link>
                   )}    
             </div>
         </ContainerFilme>
